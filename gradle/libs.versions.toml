@@ -8,6 +8,8 @@ quilted_fabric_api = "4.0.0-beta.17+0.64.0-1.19.2"
 
 botania = "1.19.2-436-FABRIC-SNAPSHOT"
 
+arrp = "0.6.4"
+
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 quilt_mappings = { module = "org.quiltmc:quilt-mappings", version.ref = "quilt_mappings" }
@@ -17,6 +19,8 @@ quilted_fabric_api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-a
 quilted_fabric_api_deprecated = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api-deprecated", version.ref = "quilted_fabric_api" }
 
 botania = { module = "vazkii.botania:Botania", version.ref = "botania"}
+
+arrp = { module = "net.devtech:arrp", version.ref = "arrp" }
 
 # If you have multiple similar dependencies, you can declare a dependency bundle and reference it on the build script with "libs.bundles.example".
 [bundles]

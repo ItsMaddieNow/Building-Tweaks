@@ -7,11 +7,14 @@
 	"client": [
 		"TitleScreenMixin",
         "BlockMixin",
-        "FlowerBlockMixin"
+        "FlowerBlockMixin",
+        "BlockItemMixin",
+        "BlocksMixin"
 	],
     "server": [
       "BlockMixin",
-      "FlowerBlockMixin"
+      "FlowerBlockMixin",
+      "BlockItemMixin"
     ],
 	"injectors": {
 		"defaultRequire": 1
