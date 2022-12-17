@@ -1,6 +1,7 @@
 package com.example.example_mod.mixin;
 
 import com.example.example_mod.ExampleMod;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
@@ -19,7 +20,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BlockItem.class)
 public class BlockItemMixin {
 	public void AddFlowers(World world, BlockPos pos, PlayerEntity player, ItemStack stack, BlockState state, CallbackInfoReturnable<ActionResult> cir){
-		if (stack.isOf(state.getBlock().asItem()) && state.isIn(ExampleMod.MULTI_FLOWER)) {
+		Block block =  state.getBlock();
+		if (stack.isOf(block.asItem()) && ExampleMod.allowedFlower(block)) {
 			int flowers = state.get(ExampleMod.FLOWERS);
 			if (flowers < ExampleMod.MAX_FLOWERS){
 				world.setBlockState(pos,state.with(ExampleMod.FLOWERS,flowers+1));

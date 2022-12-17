@@ -29,7 +29,7 @@ public class FlowerBlockMixin extends Block implements Fertilizable {
 		world.setBlockState(pos,withFlowers(i),2);
 	}
 	public boolean isFertilizable(BlockView world, BlockPos pos, BlockState state, boolean isClient){
-		return (getFlowers(state) < ExampleMod.MAX_FLOWERS && state.isIn(ExampleMod.MULTI_FLOWER));
+		return (getFlowers(state) < ExampleMod.MAX_FLOWERS && ExampleMod.allowedFlower(state.getBlock())/*state.isIn(ExampleMod.MULTI_FLOWER)*/);
 	}
 	public boolean canGrow(World world, RandomGenerator random, BlockPos pos, BlockState state) { return true; }
 	public void grow(ServerWorld world, RandomGenerator random, BlockPos pos, BlockState state) {

@@ -13,7 +13,8 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
-	maven { url = "https://jitpack.io" }
+	maven {url = "https://jitpack.io"}
+	maven {url = uri("https://storage.googleapis.com/devan-maven/")}
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -28,8 +29,10 @@ dependencies {
 		officialMojangMappings()
 	}
 	*/
+	modImplementation libs.qsl
 	modImplementation libs.quilt.loader
 
+	modImplementation libs.arrp
 	modApi(libs.statement){ exclude group: "net.fabricmc.fabric-api" }
 
 	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
@@ -86,5 +89,27 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
+	}
+}
+loom {
+	runs {
+		// This adds a new gradle task that runs the datagen API: "gradlew runDatagenClient"
+		datagenClient {
+			inherit client
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+
+			runDir "build/datagen"
+		}
+	}
+}
+sourceSets {
+	main {
+		resources {
+			srcDirs += [
+					'src/main/generated'
+			]
+		}
 	}
 }
