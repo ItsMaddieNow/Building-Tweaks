@@ -1,6 +1,6 @@
-package com.example.example_mod.mixin;
+package io.github.ItsMaddieNow.flourishing_flowers.mixin;
 
-import com.example.example_mod.ExampleMod;
+import io.github.ItsMaddieNow.flourishing_flowers.FlourishingFlowers;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -15,21 +15,21 @@ public class FlowerBlockMixin extends Block implements Fertilizable {
 		super(settings);
 	}
 	public BlockState withFlowers(int flowers) {
-		return this.getDefaultState().with(ExampleMod.FLOWERS, flowers);
+		return this.getDefaultState().with(FlourishingFlowers.FLOWERS, flowers);
 	}
 	protected int getFlowers(BlockState state) {
-		return state.get(ExampleMod.FLOWERS);
+		return state.get(FlourishingFlowers.FLOWERS);
 	}
 	public void applyFlowers(World world, BlockPos pos, BlockState state){
 		int i = this.getFlowers(state)+1;
-		int j = ExampleMod.MAX_FLOWERS;
+		int j = FlourishingFlowers.MAX_FLOWERS;
 		if (i > j){
 			i = j;
 		}
 		world.setBlockState(pos,withFlowers(i),2);
 	}
 	public boolean isFertilizable(BlockView world, BlockPos pos, BlockState state, boolean isClient){
-		return (getFlowers(state) < ExampleMod.MAX_FLOWERS && ExampleMod.allowedFlower(state.getBlock())/*state.isIn(ExampleMod.MULTI_FLOWER)*/);
+		return (getFlowers(state) < FlourishingFlowers.MAX_FLOWERS && FlourishingFlowers.allowedFlower(state.getBlock())/*state.isIn(ExampleMod.MULTI_FLOWER)*/);
 	}
 	public boolean canGrow(World world, RandomGenerator random, BlockPos pos, BlockState state) { return true; }
 	public void grow(ServerWorld world, RandomGenerator random, BlockPos pos, BlockState state) {

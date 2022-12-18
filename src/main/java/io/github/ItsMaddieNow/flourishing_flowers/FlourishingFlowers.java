@@ -1,4 +1,4 @@
-package com.example.example_mod;
+package io.github.ItsMaddieNow.flourishing_flowers;
 
 import com.google.gson.JsonObject;
 import net.devtech.arrp.api.RRPCallback;
@@ -20,7 +20,7 @@ import java.util.Objects;
 
 import static net.devtech.arrp.json.loot.JLootTable.*;
 
-public class ExampleMod implements ModInitializer {
+public class FlourishingFlowers implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod name as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
@@ -38,10 +38,8 @@ public class ExampleMod implements ModInitializer {
 		RRPCallback.AFTER_VANILLA.register(a -> a.add(RESOURCE_PACK));
 		monitor.forAll(context -> {
 			Identifier id = context.id();
-			LOGGER.info(id.toString()+" Registered");
 			StateRefresher.INSTANCE.addBlockProperty(context.value(), FLOWERS, 1);
 			StateRefresher.INSTANCE.reorderBlockStates();
-			LOGGER.info(context.id().getPath());
 			JEntry Functions = entry().type("minecraft:item").name(id.toString());
 			for (int i = 2; i <= MAX_FLOWERS; i ++){
 				JsonObject flowers = new JsonObject();
@@ -67,7 +65,7 @@ public class ExampleMod implements ModInitializer {
 		});
 	}
 	public static boolean allowedFlower(Identifier id, Block block){
-		return block instanceof FlowerBlock && !(Objects.equals(id.getNamespace(), "botania"));
+		return block instanceof FlowerBlock && !(Objects.  equals(id.getNamespace(), "botania"));
 	}
 	public static boolean allowedFlower(Block block){
 		return allowedFlower(Registry.BLOCK.getId(block),block);
