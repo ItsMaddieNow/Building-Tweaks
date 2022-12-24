@@ -3,7 +3,10 @@ package io.github.ItsMaddieNow.flourishing_flowers;
 import com.google.gson.JsonObject;
 import net.devtech.arrp.api.RRPCallback;
 import net.devtech.arrp.api.RuntimeResourcePack;
+import net.devtech.arrp.json.blockstate.JState;
+import net.devtech.arrp.json.blockstate.JVariant;
 import net.devtech.arrp.json.loot.*;
+import net.devtech.arrp.json.models.JModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerBlock;
 import net.minecraft.state.property.IntProperty;
@@ -59,6 +62,18 @@ public class FlourishingFlowers implements ModInitializer {
 							.entry(Functions)
 					)
 			);
+			String namespace = id.getNamespace();
+			String path = id.getPath();
+			RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx2").textures(JModel.textures().var("cross",namespace+ ":block/"+path)), new Identifier(namespace,"block/"+path+"x2"));
+			RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx3").textures(JModel.textures().var("cross",namespace+ ":block/"+path)), new Identifier(namespace,"block/"+path+"x3"));
+			RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx4").textures(JModel.textures().var("cross",namespace+ ":block/"+path)), new Identifier(namespace,"block/"+path+"x4"));
+
+			RESOURCE_PACK.addBlockState(JState.state(new JVariant()
+					.put("flowers=1",JState.model(namespace+":block/"+path))
+					.put("flowers=2",JState.model(namespace+":block/"+path+"x2"))
+					.put("flowers=3",JState.model(namespace+":block/"+path+"x3"))
+					.put("flowers=4",JState.model(namespace+":block/"+path+"x4"))
+			),id);
 
 
 

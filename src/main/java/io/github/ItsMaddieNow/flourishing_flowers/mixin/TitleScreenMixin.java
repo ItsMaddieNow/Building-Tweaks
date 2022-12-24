@@ -12,5 +12,6 @@ public class TitleScreenMixin {
 	@Inject(method = "init", at = @At("TAIL"))
 	public void exampleMod$onInit(CallbackInfo ci) {
 		FlourishingFlowers.LOGGER.info("This line is printed by an example mod mixin!");
+		//FlourishingFlowers.RESOURCE_PACK.dump();
 	}
 }
