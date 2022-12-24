@@ -7,9 +7,6 @@
         "FlowerBlockMixin",
         "BlockItemMixin"
     ],
-	"client": [
-		"TitleScreenMixin"
-	],
 	"injectors": {
 		"defaultRequire": 1
 	}

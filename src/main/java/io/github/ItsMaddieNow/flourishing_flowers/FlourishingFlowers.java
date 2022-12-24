@@ -36,9 +36,10 @@ public class FlourishingFlowers implements ModInitializer {
 	public static RuntimeResourcePack RESOURCE_PACK = RuntimeResourcePack.create(ID+":multi-flowers");
 	@Override
 	public void onInitialize(ModContainer mod) {
-		LOGGER.info("Hello Quilt world from {}!", mod.metadata().name());
-		var monitor = RegistryMonitor.create(Registry.BLOCK).filter(context -> allowedFlower(context.id(),context.value()));
+		LOGGER.info("Registering Virtual Resourcepack");
 		RRPCallback.AFTER_VANILLA.register(a -> a.add(RESOURCE_PACK));
+		LOGGER.info("Setting up Registry Monitor");
+		var monitor = RegistryMonitor.create(Registry.BLOCK).filter(context -> allowedFlower(context.id(),context.value()));
 		monitor.forAll(context -> {
 			Identifier id = context.id();
 			StateRefresher.INSTANCE.addBlockProperty(context.value(), FLOWERS, 1);
