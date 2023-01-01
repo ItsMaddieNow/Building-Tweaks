@@ -2,24 +2,24 @@
 	"schema_version": 1,
 	"quilt_loader": {
 		"group": "io.github.ItsMaddieNow",
-		"id": "flourishing_flowers",
+		"id": "maddies_building_tweaks",
 		"version": "${version}",
 		"metadata": {
-			"name": "Flourishing Flowers",
-			"description": "Allows multiple of the same type of flower to be placed in the same block",
+			"name": "Maddie's Building Tweaks",
+			"description": "Allows multiple of the same type of flower to be placed in the same block using blockstates so blocks don't go missing if the mod is removed",
 			"contributors": {
-				"Your name here": "Owner"
+				"ItsMaddieNow": "Owner"
 			},
 			"contact": {
-				"homepage": "https://github.com/ItsMaddieNow/Flourishing-Flowers",
-				"issues": "https://github.com/ItsMaddieNow/Flourishing-Flowers/issues",
-				"sources": "https://github.com/ItsMaddieNow/Flourishing-Flowers"
+				"homepage": "https://github.com/ItsMaddieNow/Building-Tweaks",
+				"issues": "https://github.com/ItsMaddieNow/Building-Tweaks/issues",
+				"sources": "https://github.com/ItsMaddieNow/Building-Tweaks"
 			},
-			"icon": "assets/example_mod/icon.png"
+			"icon": "assets/maddies_building_tweaks/icon.png"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "io.github.ItsMaddieNow.flourishing_flowers.FlourishingFlowers"
+			"init": "io.github.ItsMaddieNow.building_tweaks.BuildingTweaks"
 		},
 		"depends": [
 			{
@@ -36,5 +36,5 @@
 			}
 		]
 	},
-	"mixin": "flourishing_flowers.mixins.json"
+	"mixin": "building_tweaks.mixins.json"
 }

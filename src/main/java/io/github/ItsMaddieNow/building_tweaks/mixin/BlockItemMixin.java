@@ -1,6 +1,6 @@
-package io.github.ItsMaddieNow.flourishing_flowers.mixin;
+package io.github.ItsMaddieNow.building_tweaks.mixin;
 
-import io.github.ItsMaddieNow.flourishing_flowers.FlourishingFlowers;
+import io.github.ItsMaddieNow.building_tweaks.BuildingTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,13 +21,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class BlockItemMixin {
 	public void AddFlowers(World world, BlockPos pos, PlayerEntity player, ItemStack stack, BlockState state, CallbackInfoReturnable<ActionResult> cir){
 		Block block =  state.getBlock();
-		if (stack.isOf(block.asItem()) && FlourishingFlowers.allowedFlower(block)) {
-			int flowers = state.get(FlourishingFlowers.FLOWERS);
-			if (flowers < FlourishingFlowers.MAX_FLOWERS){
-				world.setBlockState(pos,state.with(FlourishingFlowers.FLOWERS,flowers+1));
+		if (stack.isOf(block.asItem()) && BuildingTweaks.allowedFlower(block)) {
+			int flowers = state.get(BuildingTweaks.FLOWERS);
+			if (flowers < BuildingTweaks.MAX_FLOWERS){
+				world.setBlockState(pos,state.with(BuildingTweaks.FLOWERS,flowers+1));
 				BlockSoundGroup blockSoundGroup = state.getSoundGroup();
 				world.playSound(player, pos, blockSoundGroup.getPlaceSound(), SoundCategory.BLOCKS,(blockSoundGroup.getVolume()+1.0F)/2.0F,blockSoundGroup.getPitch() * 0.8F);
-				FlourishingFlowers.LOGGER.info(state.get(FlourishingFlowers.FLOWERS).toString());
+				BuildingTweaks.LOGGER.info(state.get(BuildingTweaks.FLOWERS).toString());
 				world.emitGameEvent(GameEvent.BLOCK_PLACE, pos, GameEvent.Context.create(player,state));
 
 				if (player == null || !player.getAbilities().creativeMode) {
