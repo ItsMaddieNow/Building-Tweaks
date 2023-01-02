@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#botania:special_flowers",
+    "minecraft:wither_rose"
+  ]
+}
