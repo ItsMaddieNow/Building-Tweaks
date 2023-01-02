@@ -2,7 +2,7 @@
 This is a building mod made with the philosophy that nothing that you build should be destroyed if it is removed.
 <p align="center">
 <a href="https://quiltmc.org/en/" alt="Powered By Quilt Loader"><img height="64" src="https://raw.githubusercontent.com/QuiltMC/art/master/brand/svg/quilt_powered_dark.svg"/></a>
-<a href="https://modrinth.com/mod/maddies-building-tweaks" alt="Download On Modrinth"><img height="72" src="https://raw.githubusercontent.com/modrinth/art/main/Branding/Badge/badge-dark.svg"></a>
+<a href="https://modrinth.com/mod/maddies-building-tweaks" alt="Download On Modrinth"><img height="64" src="https://raw.githubusercontent.com/modrinth/art/main/Branding/Badge/badge-dark.svg"></a>
 <br>
 <a href="https://modrinth.com/mod/maddies-building-tweaks" alt="Download On Modrinth"><img src="https://img.shields.io/badge/dynamic/json?color=5da426&label=Modrinth&query=downloads&suffix=%20downloads&url=https%3A%2F%2Fapi.modrinth.com%2Fapi%2Fv1%2Fmod%2FhHUFyhEX"></a>
 <a href="https://www.curseforge.com/minecraft/mc-mods/maddies-building-tweaks" alt="Download On CurseForge"><img src="https://cf.way2muchnoise.eu/maddies-building-tweaks.svg"></a>
