@@ -4,17 +4,17 @@ This is a building mod made with the philosophy that nothing that you build shou
 <a href="https://quiltmc.org/en/" alt="Powered By Quilt Loader"><img height="64" src="https://github.com/intergrav/devins-badges/raw/v2/assets/cozy/supported/quilt_vector.svg"/></a>
 <a href="https://modrinth.com/mod/qsl" alt="Requires Quilt Standard Libraries"><img height="64" src="https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/requires/quilt-standard-libraries_vector.svg"></a>
 <br>
-<!--<a href="https://modrinth.com/mod/maddies-building-tweaks" alt="Download On Modrinth"><img height="64" src="https://github.com/intergrav/devins-badges/raw/v2/assets/cozy/available/modrinth_vector.svg"></a>
-<a href="https://www.curseforge.com/minecraft/mc-mods/maddies-building-tweaks" alt="Download On CurseForge"><img height="64" src="https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/available/curseforge_vector.svg"></a>
+<a href="https://modrinth.com/mod/maddies-building-tweaks" alt="Download On Modrinth"><img height="64" src="https://github.com/intergrav/devins-badges/raw/v2/assets/cozy/available/modrinth_vector.svg"></a>
+<!--<a href="https://www.curseforge.com/minecraft/mc-mods/maddies-building-tweaks" alt="Download On CurseForge"><img height="64" src="https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/available/curseforge_vector.svg"></a>
 -->
 
 </p>
 
 ## Features
 ### Multi-flowers
-Allows you to place up to four of the same type of flower(Including Modded Flowers) in a single block.
+Allows you to place up to four of the same type of flower(Including Modded Flowers) in a single block for decoration and makes flowers more renewable by allowing you to bonemeal them.
 
-<p align="center"><img src="https://raw.githubusercontent.com/ItsMaddieNow/Building-Tweaks/main/assets/Flower-Demo.webp"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/ItsMaddieNow/Building-Tweaks/main/assets/Flower-Demo-Small.webp"><img src="https://raw.githubusercontent.com/ItsMaddieNow/Building-Tweaks/main/assets/Bonemeal-Demo-Small.webp"></p>
 
 ### More Coming Soon
 ## License
