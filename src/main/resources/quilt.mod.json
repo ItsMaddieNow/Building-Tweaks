@@ -33,6 +33,14 @@
 			{
 				"id": "minecraft",
 				"versions": ">=1.19.2"
+			},
+			{
+				"id": "statement",
+				"versions": ">=4.2.4"
+			},
+			{
+				"id": "arrp",
+				"versions": ">=0.6.2"
 			}
 		]
 	},
