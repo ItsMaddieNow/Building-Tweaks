@@ -5,8 +5,8 @@ import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.random.RandomGenerator;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(FlowerBlock.class)
@@ -28,7 +28,7 @@ public class FlowerBlockMixin extends Block implements Fertilizable {
 		}
 		world.setBlockState(pos,withFlowers(i),2);
 	}
-	public boolean isFertilizable(BlockView world, BlockPos pos, BlockState state, boolean isClient){
+	public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient){
 		return (getFlowers(state) < BuildingTweaks.MAX_FLOWERS && BuildingTweaks.allowedFlower(state.getBlock()) && !state.isIn(BuildingTweaks.NO_BONEMEAL));
 	}
 	public boolean canGrow(World world, RandomGenerator random, BlockPos pos, BlockState state) { return true; }

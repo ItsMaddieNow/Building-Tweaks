@@ -9,10 +9,12 @@ import net.devtech.arrp.json.loot.*;
 import net.devtech.arrp.json.models.JModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerBlock;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.property.IntProperty;
-import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.quiltmc.qsl.registry.api.event.RegistryMonitor;
@@ -33,14 +35,14 @@ public class BuildingTweaks implements ModInitializer {
 	public static final Integer MAX_FLOWERS = 4;
 	public static final Logger LOGGER = LoggerFactory.getLogger(IDHuman);
 	public static IntProperty FLOWERS = IntProperty.of("flowers",1,MAX_FLOWERS);
-	public static TagKey<Block> NO_BONEMEAL = TagKey.of(Registry.BLOCK_KEY, new Identifier("maddies_building_tweaks", "no_bonemeal"));
+	public static TagKey<Block> NO_BONEMEAL = TagKey.of(RegistryKeys.BLOCK, new Identifier("maddies_building_tweaks", "no_bonemeal"));
 	public static RuntimeResourcePack RESOURCE_PACK = RuntimeResourcePack.create(ID+":multi-flowers");
 	@Override
 	public void onInitialize(ModContainer mod) {
 		LOGGER.info("Registering Virtual Resourcepack");
 		RRPCallback.AFTER_VANILLA.register(a -> a.add(RESOURCE_PACK));
 		LOGGER.info("Setting up Registry Monitor");
-		var monitor = RegistryMonitor.create(Registry.BLOCK).filter(context -> allowedFlower(context.value()));
+		var monitor = RegistryMonitor.create(Registries.BLOCK).filter(context -> allowedFlower(context.value()));
 		monitor.forAll(context -> {
 			Identifier id = context.id();
 			StateRefresher.INSTANCE.addBlockProperty(context.value(), FLOWERS, 1);
