@@ -64,21 +64,22 @@ public class BuildingTweaks implements ModInitializer {
 							.entry(Functions)
 					)
 			);
-			String namespace = id.getNamespace();
 			String path = id.getPath();
-			RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx2").textures(JModel.textures().var("cross",namespace+ ":block/"+path)), new Identifier(namespace,"block/"+path+"x2"));
-			RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx3").textures(JModel.textures().var("cross",namespace+ ":block/"+path)), new Identifier(namespace,"block/"+path+"x3"));
-			RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx4").textures(JModel.textures().var("cross",namespace+ ":block/"+path)), new Identifier(namespace,"block/"+path+"x4"));
+			String unmodified_path = id.getPath();
+			if(path.endsWith("motif")) {
+				path = path.substring(0,path.length()-6);
+			}
+			String namespace = id.getNamespace();
+			RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx2").textures(JModel.textures().var("cross", namespace + ":block/" + path)), new Identifier(namespace, "block/" + path + "x2"));
+			RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx3").textures(JModel.textures().var("cross", namespace + ":block/" + path)), new Identifier(namespace, "block/" + path + "x3"));
+			RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx4").textures(JModel.textures().var("cross", namespace + ":block/" + path)), new Identifier(namespace, "block/" + path + "x4"));
 
 			RESOURCE_PACK.addBlockState(JState.state(new JVariant()
-					.put("flowers=1",JState.model(namespace+":block/"+path))
-					.put("flowers=2",JState.model(namespace+":block/"+path+"x2"))
-					.put("flowers=3",JState.model(namespace+":block/"+path+"x3"))
-					.put("flowers=4",JState.model(namespace+":block/"+path+"x4"))
-			),id);
-
-
-
+					.put("flowers=1", JState.model(namespace + ":block/" + unmodified_path))
+					.put("flowers=2", JState.model(namespace + ":block/" + path + "x2"))
+					.put("flowers=3", JState.model(namespace + ":block/" + path + "x3"))
+					.put("flowers=4", JState.model(namespace + ":block/" + path + "x4"))
+			), id);
 		});
 	}
 	public static boolean allowedFlower(Block block){
