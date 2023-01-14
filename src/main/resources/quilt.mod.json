@@ -39,7 +39,7 @@
 				"versions": ">=4.2.4"
 			},
 			{
-				"id": "arrp",
+				"id": "advanced_runtime_resource_pack",
 				"versions": ">=0.6.2"
 			}
 		]
