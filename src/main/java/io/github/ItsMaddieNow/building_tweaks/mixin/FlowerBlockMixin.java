@@ -1,6 +1,7 @@
 package io.github.ItsMaddieNow.building_tweaks.mixin;
 
 import io.github.ItsMaddieNow.building_tweaks.BuildingTweaks;
+import io.github.ItsMaddieNow.building_tweaks.flowers.FlowerTweaks;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -15,21 +16,21 @@ public class FlowerBlockMixin extends Block implements Fertilizable {
 		super(settings);
 	}
 	public BlockState withFlowers(int flowers) {
-		return this.getDefaultState().with(BuildingTweaks.FLOWERS, flowers);
+		return this.getDefaultState().with(FlowerTweaks.FLOWERS, flowers);
 	}
 	protected int getFlowers(BlockState state) {
-		return state.get(BuildingTweaks.FLOWERS);
+		return state.get(FlowerTweaks.FLOWERS);
 	}
 	public void applyFlowers(World world, BlockPos pos, BlockState state){
 		int i = this.getFlowers(state)+1;
-		int j = BuildingTweaks.MAX_FLOWERS;
+		int j = FlowerTweaks.MAX_FLOWERS;
 		if (i > j){
 			i = j;
 		}
 		world.setBlockState(pos,withFlowers(i),2);
 	}
 	public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient){
-		return (getFlowers(state) < BuildingTweaks.MAX_FLOWERS && BuildingTweaks.allowedFlower(state.getBlock()) && !state.isIn(BuildingTweaks.NO_BONEMEAL));
+		return (getFlowers(state) < FlowerTweaks.MAX_FLOWERS && FlowerTweaks.allowedFlower(state.getBlock()) && !state.isIn(BuildingTweaks.NO_BONEMEAL));
 	}
 	public boolean canGrow(World world, RandomGenerator random, BlockPos pos, BlockState state) { return true; }
 	public void grow(ServerWorld world, RandomGenerator random, BlockPos pos, BlockState state) {

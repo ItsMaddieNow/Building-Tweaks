@@ -28,7 +28,7 @@ public class ResourcePack {
 
 		// Create function for loot table to drop correct amount of flowers based on blockstate
 		JEntry Functions = entry().type("minecraft:item").name(id.toString());
-		for (int i = 2; i <= BuildingTweaks.MAX_FLOWERS; i ++){
+		for (int i = 2; i <= FlowerTweaks.MAX_FLOWERS; i ++){
 			JsonObject flowers = new JsonObject();
 			flowers.addProperty("flowers", Integer.toString(i));
 			Functions = Functions.function(function("minecraft:set_count")

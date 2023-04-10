@@ -21,25 +21,12 @@ public class BuildingTweaks implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final String IDHuman = "Maddies Building Tweaks" ;
 	public static final String ID = "maddies_building_tweaks" ;
-	public static final Integer MAX_FLOWERS = 4;
 	public static final Logger LOGGER = LoggerFactory.getLogger(IDHuman);
-	public static IntProperty FLOWERS = IntProperty.of("flowers",1,MAX_FLOWERS);
 	public static TagKey<Block> NO_BONEMEAL = TagKey.of(RegistryKeys.BLOCK, new Identifier("maddies_building_tweaks", "no_bonemeal"));
 
 	@Override
 	public void onInitialize(ModContainer mod) {
 		ResourcePack.init();
-		LOGGER.info("Setting up Registry Monitor");
-		var monitor = RegistryMonitor.create(Registries.BLOCK).filter(context -> allowedFlower(context.value()));
-		monitor.forAll(context -> {
-			Identifier id = context.id();
-			StateRefresher.INSTANCE.addBlockProperty(context.value(), FLOWERS, 1);
-			StateRefresher.INSTANCE.reorderBlockStates();
 
-			ResourcePack.resourceGen(id);
-		});
-	}
-	public static boolean allowedFlower(Block block){
-		return block instanceof FlowerBlock;
 	}
 }
