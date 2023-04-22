@@ -1,5 +1,6 @@
 package io.github.ItsMaddieNow.building_tweaks;
 
+import io.github.ItsMaddieNow.building_tweaks.flowers.FlowerTweaks;
 import io.github.ItsMaddieNow.building_tweaks.flowers.ResourcePack;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerBlock;
@@ -9,6 +10,7 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.Identifier;
 import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.loader.api.config.QuiltConfig;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.quiltmc.qsl.registry.api.event.RegistryMonitor;
 import org.slf4j.Logger;
@@ -22,11 +24,12 @@ public class BuildingTweaks implements ModInitializer {
 	public static final String IDHuman = "Maddies Building Tweaks" ;
 	public static final String ID = "maddies_building_tweaks" ;
 	public static final Logger LOGGER = LoggerFactory.getLogger(IDHuman);
-	public static TagKey<Block> NO_BONEMEAL = TagKey.of(RegistryKeys.BLOCK, new Identifier("maddies_building_tweaks", "no_bonemeal"));
+	public static final TweakConfig CONFIG = QuiltConfig.create(ID, "config", TweakConfig.class);
 
 	@Override
 	public void onInitialize(ModContainer mod) {
-		ResourcePack.init();
-
+		if (ConfigValue.FLOWERSENABLED.value()){
+			FlowerTweaks.FlowerInit();
+		}
 	}
 }
