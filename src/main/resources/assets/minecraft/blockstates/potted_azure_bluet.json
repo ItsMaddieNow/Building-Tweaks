@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "flowers=1": {
+      "model": "minecraft:block/potted_azure_bluet"
+    },
+    "flowers=2": {
+      "model": "minecraft:block/potted_azure_bluetx2"
+    },
+    "flowers=3": {
+      "model": "minecraft:block/potted_azure_bluetx3"
+    },
+    "flowers=4": {
+      "model": "minecraft:block/potted_azure_bluetx4"
+    },
+    "flowers=5": {
+      "model": "minecraft:block/potted_azure_bluetx5"
+    }
+  }
+}

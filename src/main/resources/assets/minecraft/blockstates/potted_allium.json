@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "flowers=1": {
+      "model": "minecraft:block/potted_allium"
+    },
+    "flowers=2": {
+      "model": "minecraft:block/potted_alliumx2"
+    },
+    "flowers=3": {
+      "model": "minecraft:block/potted_alliumx3"
+    },
+    "flowers=4": {
+      "model": "minecraft:block/potted_alliumx4"
+    },
+    "flowers=5": {
+      "model": "minecraft:block/potted_alliumx5"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "flowers=1": {
+      "model": "minecraft:block/potted_orange_tulip"
+    },
+    "flowers=2": {
+      "model": "minecraft:block/potted_orange_tulipx2"
+    },
+    "flowers=3": {
+      "model": "minecraft:block/potted_orange_tulipx3"
+    },
+    "flowers=4": {
+      "model": "minecraft:block/potted_orange_tulipx4"
+    },
+    "flowers=5": {
+      "model": "minecraft:block/potted_orange_tulipx5"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "flowers=1": {
+      "model": "minecraft:block/potted_poppy"
+    },
+    "flowers=2": {
+      "model": "minecraft:block/potted_poppyx2"
+    },
+    "flowers=3": {
+      "model": "minecraft:block/potted_poppyx3"
+    },
+    "flowers=4": {
+      "model": "minecraft:block/potted_poppyx4"
+    },
+    "flowers=5": {
+      "model": "minecraft:block/potted_poppyx5"
+    }
+  }
+}

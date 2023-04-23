@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "flowers=1": {
+      "model": "minecraft:block/potted_blue_orchid"
+    },
+    "flowers=2": {
+      "model": "minecraft:block/potted_blue_orchidx2"
+    },
+    "flowers=3": {
+      "model": "minecraft:block/potted_blue_orchidx3"
+    },
+    "flowers=4": {
+      "model": "minecraft:block/potted_blue_orchidx4"
+    },
+    "flowers=5": {
+      "model": "minecraft:block/potted_blue_orchidx5"
+    }
+  }
+}
