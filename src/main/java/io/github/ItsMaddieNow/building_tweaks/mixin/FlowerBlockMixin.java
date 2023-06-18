@@ -1,6 +1,5 @@
 package io.github.ItsMaddieNow.building_tweaks.mixin;
 
-import io.github.ItsMaddieNow.building_tweaks.BuildingTweaks;
 import io.github.ItsMaddieNow.building_tweaks.ConfigValue;
 import io.github.ItsMaddieNow.building_tweaks.flowers.FlowerTweaks;
 import net.minecraft.block.*;
@@ -31,7 +30,7 @@ public class FlowerBlockMixin extends Block implements Fertilizable {
 		world.setBlockState(pos,withFlowers(i),2);
 	}
 	public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient){
-		return ConfigValue.FLOWERSENABLED.value() && (getFlowers(state) < FlowerTweaks.MAX_FLOWERS && FlowerTweaks.allowedFlower(state.getBlock()) && !state.isIn(FlowerTweaks.NO_BONEMEAL));
+		return ConfigValue.FLOWERS_ENABLED.value() && (getFlowers(state) < FlowerTweaks.MAX_FLOWERS && FlowerTweaks.allowedFlower(state.getBlock()) && !state.isIn(FlowerTweaks.NO_BONEMEAL));
 	}
 	public boolean canGrow(World world, RandomGenerator random, BlockPos pos, BlockState state) { return true; }
 	public void grow(ServerWorld world, RandomGenerator random, BlockPos pos, BlockState state) {

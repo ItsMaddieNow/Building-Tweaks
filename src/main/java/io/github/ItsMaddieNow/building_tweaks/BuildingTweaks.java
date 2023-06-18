@@ -28,8 +28,6 @@ public class BuildingTweaks implements ModInitializer {
 
 	@Override
 	public void onInitialize(ModContainer mod) {
-		if (ConfigValue.FLOWERSENABLED.value()){
-			FlowerTweaks.FlowerInit();
-		}
+		FlowerTweaks.FlowerInit();
 	}
 }
