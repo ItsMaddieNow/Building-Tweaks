@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/flower_pot_crossx5",
   "textures": {
-    "plant": "minecraft:block/wither_rosex5"
+    "plant": "minecraft:block/wither_rose"
   }
 }

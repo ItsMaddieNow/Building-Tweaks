@@ -8,4 +8,6 @@ import org.quiltmc.config.api.annotations.Comment;
 public class TweakConfig extends WrappedConfig {
 	@Comment("Enable Multi-Flowers.")
 	public final boolean enableFlowers = true;
+	@Comment("Enable Block Cracking.")
+	public final boolean enableCracking = true;
 }

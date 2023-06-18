@@ -5,7 +5,9 @@
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
         "FlowerBlockMixin",
-        "BlockItemMixin"
+        "BlockItemMixin",
+        "PotBlockAccessor",
+        "PotMixin"
     ],
 	"injectors": {
 		"defaultRequire": 1
