@@ -1,6 +1,5 @@
 #
-# This pulled from LambdAurora's LambdaBetterGrass
-# Thanks
+# This workflow pulls from LambdAurora's LambdaBetterGrass and Sodium
 # 
 
 name: Gradle Build
@@ -28,7 +27,16 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
-          
+      - name: Cache/Uncache Building Tweaks
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/loom-cache
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
       - name: Build With Gradle
         uses: gradle/gradle-build-action@v2
         with:
