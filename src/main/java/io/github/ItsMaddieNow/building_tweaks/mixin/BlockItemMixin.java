@@ -29,7 +29,6 @@ public class BlockItemMixin {
 				world.setBlockState(pos,state.with(FlowerTweaks.FLOWERS,flowers+1));
 				BlockSoundGroup blockSoundGroup = state.getSoundGroup();
 				world.playSound(player, pos, blockSoundGroup.getPlaceSound(), SoundCategory.BLOCKS,(blockSoundGroup.getVolume()+1.0F)/2.0F,blockSoundGroup.getPitch() * 0.8F);
-				BuildingTweaks.LOGGER.info(state.get(FlowerTweaks.FLOWERS).toString());
 				world.emitGameEvent(GameEvent.BLOCK_PLACE, pos, GameEvent.Context.create(player,state));
 
 				if (player == null || !player.getAbilities().creativeMode) {
