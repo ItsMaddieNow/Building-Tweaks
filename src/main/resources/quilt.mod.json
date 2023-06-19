@@ -28,11 +28,11 @@
 			},
 			{
 				"id": "quilted_fabric_api",
-				"versions": ">=6.0.0-"
+				"versions": ">=7.0.3-"
 			},
 			{
 				"id": "minecraft",
-				"versions": ">=1.19.4"
+				"versions": ">=1.20.1"
 			},
 			{
 				"id": "statement",
