@@ -1,7 +1,5 @@
 package io.github.ItsMaddieNow.building_tweaks.mixin;
 
-import io.github.ItsMaddieNow.building_tweaks.BuildingTweaks;
-import io.github.ItsMaddieNow.building_tweaks.ConfigValue;
 import io.github.ItsMaddieNow.building_tweaks.flowers.FlowerTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -23,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class BlockItemMixin {
 	public void AddFlowers(World world, BlockPos pos, PlayerEntity player, ItemStack stack, BlockState state, CallbackInfoReturnable<ActionResult> cir){
 		Block block =  state.getBlock();
-		if (ConfigValue.FLOWERS_ENABLED.value() && stack.isOf(block.asItem()) && FlowerTweaks.allowedFlower(block)) {
+		if (stack.isOf(block.asItem()) && FlowerTweaks.allowedFlower(block)) {
 			int flowers = state.get(FlowerTweaks.FLOWERS);
 			if (flowers < FlowerTweaks.MAX_FLOWERS){
 				world.setBlockState(pos,state.with(FlowerTweaks.FLOWERS,flowers+1));

@@ -1,6 +1,5 @@
 package io.github.ItsMaddieNow.building_tweaks.mixin;
 
-import io.github.ItsMaddieNow.building_tweaks.ConfigValue;
 import io.github.ItsMaddieNow.building_tweaks.flowers.FlowerTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -42,7 +41,7 @@ public class PotMixin {
 				player.giveItemStack(dropStack);
 				world.setBlockState(pos, Blocks.FLOWER_POT.getDefaultState(), 3);
 			}
-			if (ConfigValue.FLOWERPOTS_ENABLED.value() && item instanceof BlockItem && content==((BlockItem)item).getBlock()){
+			if (item instanceof BlockItem && content==((BlockItem)item).getBlock()){
 				int i = state.get(FlowerTweaks.POT_FLOWERS);
 				if (i<FlowerTweaks.MAX_POT_FLOWERS){
 					if (!player.getAbilities().creativeMode) {
