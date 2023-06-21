@@ -1,6 +1,6 @@
 def main():
     path = "../src/main/resources/"
-    flowers = ["allium", "azure_bluet", "blue_orchid", "cornflower", "dandelion", "lily_of_the_valley", "orange_tulip", "oxeye_daisy", "pink_tulip", "poppy", "red_tulip", "white_tulip","wither_rose"]
+    flowers = ["allium", "azure_bluet", "blue_orchid", "cornflower", "dandelion", "lily_of_the_valley", "orange_tulip", "oxeye_daisy", "pink_tulip", "poppy", "red_tulip", "white_tulip","wither_rose","torchflower"]
     suffixes = ["", "x2", "x3", "x4", "x5"]
     modelFile = open("./model_template.json", "r")
     modelTemplate = modelFile.read()

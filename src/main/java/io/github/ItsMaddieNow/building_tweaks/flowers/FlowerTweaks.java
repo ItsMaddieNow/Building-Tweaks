@@ -10,8 +10,6 @@ import net.minecraft.util.Identifier;
 import org.quiltmc.qsl.registry.api.event.RegistryMonitor;
 import virtuoel.statement.api.StateRefresher;
 
-import java.util.Map;
-
 public class FlowerTweaks {
 	public static final Integer MAX_FLOWERS = 4;
 	public static IntProperty FLOWERS = IntProperty.of("flowers",1,MAX_FLOWERS);
@@ -33,6 +31,7 @@ public class FlowerTweaks {
 		StateRefresher.INSTANCE.addBlockProperty(Blocks.POTTED_RED_TULIP, POT_FLOWERS, 1);
 		StateRefresher.INSTANCE.addBlockProperty(Blocks.POTTED_WHITE_TULIP, POT_FLOWERS, 1);
 		StateRefresher.INSTANCE.addBlockProperty(Blocks.POTTED_WITHER_ROSE, POT_FLOWERS, 1);
+		StateRefresher.INSTANCE.addBlockProperty(Blocks.POTTED_TORCHFLOWER, POT_FLOWERS, 1);
 
 
 		ResourcePack.init();
