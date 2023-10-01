@@ -9,7 +9,7 @@ qsl = "6.0.3+1.20.1"
 quilted_fabric_api = "7.0.3+0.83.1-1.20.1"
 
 statement = "4.2.5"
-arrp = "0.6.7"
+arrp = "0.8.0"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }

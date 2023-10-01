@@ -8,9 +8,6 @@
     "PotBlockAccessor",
     "PotMixin"
   ],
-  "//client": [
-    "ResourceDumpMixin"
-  ],
   "injectors": {
 		"defaultRequire": 1
 	}

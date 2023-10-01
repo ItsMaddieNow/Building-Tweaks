@@ -10,10 +10,26 @@ This is a building mod made with the philosophy that nothing that you build shou
 </p>
 
 ## Features
-### Multi-flowers
+### Multi Flowers (Versions >= 1.0.0)
+Allows you to place up to four of the same type of flower(Including Modded Flowers) in a single block for decoration and
+adds the ability to place flowers in a rotated. Makes flowers more renewable by allowing you to bonemeal them.
+
+<p align="center"><img src="./assets/Multi-Placing-Small-1.0.0.webp"><img src="./assets/Bonemeal-1.0-Small.webp"><img src="./assets/Oriented-Placing-Small-1.0.0.webp"></p>
+
+### Flower Pots (Versions >= 0.1.0)
+
+Makes it possible to place up to five of one type of flower in a pot.
+
+<p align="center"><img src="./assets/Potted-Placing-0.1.0.webp"></p>
+
+<details> <summary>Old Versions</summary>
+
+### Multi-flowers Pre-1.0.0
 Allows you to place up to four of the same type of flower(Including Modded Flowers) in a single block for decoration and makes flowers more renewable by allowing you to bonemeal them.
 
-<p align="center"><img src="https://raw.githubusercontent.com/ItsMaddieNow/Building-Tweaks/main/assets/Flower-Demo-Small.webp"><img src="https://raw.githubusercontent.com/ItsMaddieNow/Building-Tweaks/main/assets/Bonemeal-Demo-Small.webp"></p>
+<p align="center"><img src="./assets/Flower-Demo-Small.webp"><img src="./assets/Bonemeal-Demo-Small.webp"></p>
+
+</details>
 
 ### More Coming Soon
 ## License
