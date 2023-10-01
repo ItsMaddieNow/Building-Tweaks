@@ -15,7 +15,7 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven {url = "https://jitpack.io"}
-	maven {url = uri("https://ueaj.dev/maven")}
+	//maven {url = uri("https://ueaj.dev/maven")}
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -33,8 +33,8 @@ dependencies {
 	modImplementation libs.qsl
 	modImplementation libs.quilt.loader
 
-	modImplementation libs.arrp
-	include libs.arrp
+	modImplementation files("libs/arrp-0.8.0.jar")
+	include files("libs/arrp-0.8.0.jar")
 	modApi(libs.statement){ exclude group: "net.fabricmc.fabric-api" }
 	include libs.statement
 

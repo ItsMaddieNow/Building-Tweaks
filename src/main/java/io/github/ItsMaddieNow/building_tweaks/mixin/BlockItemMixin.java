@@ -37,7 +37,7 @@ public class BlockItemMixin {
 		}
 	}
 
-	@Inject(method = "useOnBlock", at = @At("HEAD"), cancellable = true)
+	/*@Inject(method = "useOnBlock", at = @At("HEAD"), cancellable = true)
 	public void MoreFlowersOnBlock(ItemUsageContext context, CallbackInfoReturnable<ActionResult> cir){
 		if (!context.shouldCancelInteraction()){
 			World world = context.getWorld();
@@ -48,8 +48,8 @@ public class BlockItemMixin {
 			BlockState state = world.getBlockState(pos);
 			AddFlowers(world,pos,player,stack,state,cir);
 		}
-	}
-	@Inject(method = "place(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/util/ActionResult;", at = @At("HEAD"), cancellable = true)
+	}*/
+	/*@Inject(method = "place(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/util/ActionResult;", at = @At("HEAD"), cancellable = true)
 	public void MoreFlowersOnPlace(ItemPlacementContext context, CallbackInfoReturnable<ActionResult> cir){
 		World world = context.getWorld();
 		BlockPos pos = context.getBlockPos();
@@ -58,5 +58,5 @@ public class BlockItemMixin {
 		ItemStack stack = player.getStackInHand(context.getHand());
 		BlockState state = world.getBlockState(pos);
 		AddFlowers(world,pos,player,stack,state,cir);
-	}
+	}*/
 }

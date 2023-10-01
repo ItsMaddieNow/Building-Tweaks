@@ -4,20 +4,21 @@ import com.google.gson.JsonObject;
 import io.github.ItsMaddieNow.building_tweaks.BuildingTweaks;
 import net.devtech.arrp.api.RRPCallback;
 import net.devtech.arrp.api.RuntimeResourcePack;
-import net.devtech.arrp.json.blockstate.JState;
-import net.devtech.arrp.json.blockstate.JVariant;
+import net.devtech.arrp.json.blockstate.*;
 import net.devtech.arrp.json.loot.JEntry;
 import net.devtech.arrp.json.loot.JLootTable;
 import net.devtech.arrp.json.loot.JPool;
 import net.devtech.arrp.json.models.JModel;
 import net.minecraft.util.Identifier;
 
+import java.util.stream.IntStream;
+
 import static net.devtech.arrp.json.loot.JLootTable.*;
 
 public class ResourcePack {
 
 	public static RuntimeResourcePack RESOURCE_PACK = RuntimeResourcePack.create(BuildingTweaks.ID+":flowers");
-
+	static String[] DIRECTIONS = {"north", "east", "south", "west"};
 	public static void init(){
 		BuildingTweaks.LOGGER.info("Registering Virtual Resourcepack");
 		RRPCallback.AFTER_VANILLA.register(a -> a.add(RESOURCE_PACK));
@@ -52,16 +53,32 @@ public class ResourcePack {
 			path = path.substring(0,path.length()-6);
 		}
 		// Create models for each blockstate
+		RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx1").textures(JModel.textures().var("cross", namespace + ":block/" + path)), new Identifier(namespace, "block/" + path + "x1"));
 		RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx2").textures(JModel.textures().var("cross", namespace + ":block/" + path)), new Identifier(namespace, "block/" + path + "x2"));
 		RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx3").textures(JModel.textures().var("cross", namespace + ":block/" + path)), new Identifier(namespace, "block/" + path + "x3"));
 		RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx4").textures(JModel.textures().var("cross", namespace + ":block/" + path)), new Identifier(namespace, "block/" + path + "x4"));
 		// Create block state file
-		RESOURCE_PACK.addBlockState(JState.state(new JVariant()
-				.put("flowers=1", JState.model(namespace + ":block/" + id.getPath()))
-				.put("flowers=2", JState.model(namespace + ":block/" + path + "x2"))
-				.put("flowers=3", JState.model(namespace + ":block/" + path + "x3"))
-				.put("flowers=4", JState.model(namespace + ":block/" + path + "x4"))
-		), id);
+		Identifier[] Ids = {
+			new Identifier(namespace, "block/" + path + "x4"),
+			new Identifier(namespace, "block/" + path + "x3"),
+			new Identifier(namespace, "block/" + path + "x2"),
+			new Identifier(namespace, "block/" + path + "x1")
+
+		};
+		JState state = JState.state();
+		for(int i = 3; i >= 0; i--){
+			String[] conditions = new String[i+1];
+            IntStream.rangeClosed(0, i).forEach(j -> conditions[j] = Integer.toString(4-j));
+			for(int j = 0; j <= 3; j++){
+				state.add(new JMultipart().when(
+					new JWhen().add(new JWhen.StateBuilder()
+						.add("flowers", conditions)
+						.add("facing",DIRECTIONS[j])
+					)).addModel(new JBlockModel(Ids[i]).y(j*90)));
+			}
+
+		}
+		RESOURCE_PACK.addBlockState(state, id);
 
 	}
 }

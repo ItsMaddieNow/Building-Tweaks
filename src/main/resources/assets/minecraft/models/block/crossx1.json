@@ -6,20 +6,20 @@
 	},
 	"elements": [
 		{
-			"from": [6.76765, 0, 4.11949],
-			"to": [13.43897, 7.41257, 4.11949],
+			"from": [-0.14424, 0, 5.6552],
+			"to": [8.61464, 9.7321, 5.6552],
 			"shade": false,
-			"rotation": {"angle": 45, "axis": "y", "origin": [10.10331, 3.70629, 4.11949], "rescale": true},
+			"rotation": {"angle": 45, "axis": "y", "origin": [4.2352, 4.86605, 5.6552], "rescale": true},
 			"faces": {
 				"north": {"uv": [0, 0, 16, 16], "texture": "#cross"},
 				"south": {"uv": [0, 0, 16, 16], "texture": "#cross"}
 			}
 		},
 		{
-			"from": [10.10331, 0, 0.78383],
-			"to": [10.10331, 7.41257, 7.45515],
+			"from": [4.2352, 0, 1.27576],
+			"to": [4.2352, 9.7321, 10.03464],
 			"shade": false,
-			"rotation": {"angle": 45, "axis": "y", "origin": [10.10331, 3.70629, 4.11949], "rescale": true},
+			"rotation": {"angle": 45, "axis": "y", "origin": [4.2352, 4.86605, 5.6552], "rescale": true},
 			"faces": {
 				"east": {"uv": [0, 0, 16, 16], "texture": "#cross"},
 				"west": {"uv": [0, 0, 16, 16], "texture": "#cross"}

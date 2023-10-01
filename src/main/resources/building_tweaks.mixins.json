@@ -4,12 +4,14 @@
 	"package": "io.github.ItsMaddieNow.building_tweaks.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-        "FlowerBlockMixin",
-        "BlockItemMixin",
-        "PotBlockAccessor",
-        "PotMixin"
-    ],
-	"injectors": {
+    "FlowerBlockMixin",
+    "PotBlockAccessor",
+    "PotMixin"
+  ],
+  "//client": [
+    "ResourceDumpMixin"
+  ],
+  "injectors": {
 		"defaultRequire": 1
 	}
 }

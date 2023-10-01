@@ -5,14 +5,19 @@ import net.minecraft.block.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 import org.quiltmc.qsl.registry.api.event.RegistryMonitor;
 import virtuoel.statement.api.StateRefresher;
 
 public class FlowerTweaks {
 	public static final Integer MAX_FLOWERS = 4;
-	public static IntProperty FLOWERS = IntProperty.of("flowers",1,MAX_FLOWERS);
+	public static final IntProperty FLOWERS = IntProperty.of("flowers",1,MAX_FLOWERS);
+
+	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 	public static final Integer MAX_POT_FLOWERS = 5;
 	public static IntProperty POT_FLOWERS = IntProperty.of("flowers",1,MAX_POT_FLOWERS);
 	public static final TagKey<Block> ALLOWED_POTS = TagKey.of(RegistryKeys.BLOCK, new Identifier(BuildingTweaks.ID, "allowed_pots"));
@@ -40,6 +45,7 @@ public class FlowerTweaks {
 		monitor.forAll(context -> {
 			Identifier id = context.id();
 			StateRefresher.INSTANCE.addBlockProperty(context.value(), FLOWERS, 1);
+			StateRefresher.INSTANCE.addBlockProperty(context.value(), FACING, Direction.NORTH);
 			StateRefresher.INSTANCE.reorderBlockStates();
 
 			ResourcePack.resourceGen(id);
