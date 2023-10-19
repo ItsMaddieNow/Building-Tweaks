@@ -13,6 +13,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.stream.IntStream;
 
+import static java.lang.Math.min;
 import static net.devtech.arrp.json.loot.JLootTable.*;
 
 public class ResourcePack {
@@ -53,6 +54,7 @@ public class ResourcePack {
 			path = path.substring(0,path.length()-6);
 		}
 		// Create models for each blockstate
+		RESOURCE_PACK.addModel(JModel.model("minecraft:block/cross").textures(JModel.textures().var("cross", namespace + ":block/" + path)), new Identifier(namespace, "block/" + path + "_base"));
 		RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx1").textures(JModel.textures().var("cross", namespace + ":block/" + path)), new Identifier(namespace, "block/" + path + "x1"));
 		RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx2").textures(JModel.textures().var("cross", namespace + ":block/" + path)), new Identifier(namespace, "block/" + path + "x2"));
 		RESOURCE_PACK.addModel(JModel.model("minecraft:block/crossx3").textures(JModel.textures().var("cross", namespace + ":block/" + path)), new Identifier(namespace, "block/" + path + "x3"));
@@ -63,12 +65,19 @@ public class ResourcePack {
 			new Identifier(namespace, "block/" + path + "x3"),
 			new Identifier(namespace, "block/" + path + "x2"),
 			new Identifier(namespace, "block/" + path + "x1")
-
 		};
 		JState state = JState.state();
+		for(int j = 0; j <= 3; j++){
+			state.add(new JMultipart().when(
+				new JWhen().add(new JWhen.StateBuilder()
+					.add("flowers", new String[]{"1"})
+					.add("facing",DIRECTIONS[j])
+				)).addModel(new JBlockModel(new Identifier(namespace, "block/" + path + "_base")).y(j*90))
+			);
+		}
 		for(int i = 3; i >= 0; i--){
-			String[] conditions = new String[i+1];
-            IntStream.rangeClosed(0, i).forEach(j -> conditions[j] = Integer.toString(4-j));
+			String[] conditions = new String[min(i+1,3)];
+            IntStream.rangeClosed(0, conditions.length-1).forEach(j -> conditions[j] = Integer.toString(4-j));
 			for(int j = 0; j <= 3; j++){
 				state.add(new JMultipart().when(
 					new JWhen().add(new JWhen.StateBuilder()
