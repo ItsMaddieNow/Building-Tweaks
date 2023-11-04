@@ -5,7 +5,6 @@ This is a building mod made with the philosophy that nothing that you build shou
 <a href="https://modrinth.com/mod/qsl" alt="Requires Quilt Standard Libraries"><img height="64" src="https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/requires/quilt-standard-libraries_vector.svg"></a>
 <br>
 <a href="https://modrinth.com/mod/maddies-building-tweaks" alt="Download On Modrinth"><img height="64" src="https://github.com/intergrav/devins-badges/raw/v2/assets/cozy/available/modrinth_vector.svg"></a>
-<a href="https://www.curseforge.com/minecraft/mc-mods/maddies-building-tweaks" alt="Download On CurseForge"><img height="64" src="https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/available/curseforge_vector.svg"></a>
 
 </p>
 
