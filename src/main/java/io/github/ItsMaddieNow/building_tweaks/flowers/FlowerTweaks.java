@@ -39,7 +39,7 @@ public class FlowerTweaks {
 		StateRefresher.INSTANCE.addBlockProperty(Blocks.POTTED_TORCHFLOWER, POT_FLOWERS, 1);
 
 
-		ResourcePack.init();
+		Resources.init();
 		BuildingTweaks.LOGGER.info("Setting up Registry Monitor");
 		var monitor = RegistryMonitor.create(Registries.BLOCK).filter(context -> allowedFlower(context.value()));
 		monitor.forAll(context -> {
@@ -48,7 +48,7 @@ public class FlowerTweaks {
 			StateRefresher.INSTANCE.addBlockProperty(context.value(), FACING, Direction.NORTH);
 			StateRefresher.INSTANCE.reorderBlockStates();
 
-			ResourcePack.resourceGen(id);
+			Resources.markFlower(id);
 		});
 	}
 	public static boolean allowedFlower(Block block){
