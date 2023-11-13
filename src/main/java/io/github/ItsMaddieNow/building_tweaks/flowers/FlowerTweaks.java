@@ -46,7 +46,6 @@ public class FlowerTweaks {
 			Identifier id = context.id();
 			StateRefresher.INSTANCE.addBlockProperty(context.value(), FLOWERS, 1);
 			StateRefresher.INSTANCE.addBlockProperty(context.value(), FACING, Direction.NORTH);
-			StateRefresher.INSTANCE.reorderBlockStates();
 
 			Resources.markFlower(id);
 		});
