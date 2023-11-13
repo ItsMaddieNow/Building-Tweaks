@@ -37,10 +37,6 @@
 			{
 				"id": "statement",
 				"versions": "=4.2.5"
-			},
-			{
-				"id": "advanced_runtime_resource_pack",
-				"versions": ">=0.8.0"
 			}
 		]
 	},
