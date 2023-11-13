@@ -50,7 +50,7 @@ public class Resources {
 				{"pack":{"pack_format":%d,"description":"Maddie's Building Tweaks."}}
 				""", SharedConstants.getGameVersion().getResourceVersion(type)
 			));
-			addIconToPack(baseResources, "/assets/maddies_building_tweaks/base-pack.png");
+			addIconToPack(baseResources, "/assets/maddies_building_tweaks/icon.png");
 			addIconToPack(classicResources, "/assets/maddies_building_tweaks/classic-pack.png");
 			for (Identifier flower : Flowers) {
 				baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("blockstates/%1$s.json", flower.getPath())), (identifier) -> createFlowerBlockstate(flower));
@@ -66,6 +66,12 @@ public class Resources {
 				{"pack":{"pack_format":%d,"description":"Maddie's Building Tweaks Classic Models"}}
 				""", SharedConstants.getGameVersion().getResourceVersion(type)
 			));
+			for (Identifier flower : Flowers) {
+				classicResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("blockstates/%1$s.json", flower.getPath())), (identifier) -> createClassicFlowerBlockstate(flower));
+				classicResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$s-classicx%2$d.json", flower.getPath(), 2)), (identifier) -> createClassicFlowerQuantityModel(flower, 2));
+				classicResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$s-classicx%2$d.json", flower.getPath(), 3)), (identifier) -> createClassicFlowerQuantityModel(flower, 3));
+				classicResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$s-classicx%2$d.json", flower.getPath(), 4)), (identifier) -> createClassicFlowerQuantityModel(flower, 4));
+			}
 			profileAdder.accept(ResourcePackProfile.of("building_tweaks_classic", Text.literal("Classic Models"),  false, name -> classicResources, type, ResourcePackProfile.InsertionPosition.TOP, ResourcePackSource.PACK_SOURCE_BUILTIN));
 		}
 		long RegistrationTime = Duration.between(instant, Instant.now()).toMillis();
@@ -298,6 +304,176 @@ public class Resources {
 			""", flower.getNamespace(), flower.getPath());
 	}
 
+	static String createClassicFlowerBlockstate(Identifier flower){
+		return String.format("""
+			{
+				"multipart":
+				[
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s",
+							"y": 0
+						},
+						"when": {
+							"flowers": "1",
+							"facing": "north"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s",
+							"y": 90
+						},
+						"when": {
+							"flowers": "1",
+							"facing": "east"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s",
+							"y": 180
+						},
+						"when": {
+							"flowers": "1",
+							"facing": "south"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s",
+							"y": 270
+						},
+						"when": {
+							"flowers": "1",
+							"facing": "west"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx2",
+							"y": 0
+						},
+						"when": {
+							"flowers": "2",
+							"facing": "north"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx2",
+							"y": 90
+						},
+						"when": {
+							"flowers": "2",
+							"facing": "east"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx2",
+							"y": 180
+						},
+						"when": {
+							"flowers": "2",
+							"facing": "south"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx2",
+							"y": 270
+						},
+						"when": {
+							"flowers": "2",
+							"facing": "west"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx3",
+							"y": 0
+						},
+						"when": {
+							"flowers": "3",
+							"facing": "north"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx3",
+							"y": 90
+						},
+						"when": {
+							"flowers": "3",
+							"facing": "east"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx3",
+							"y": 180
+						},
+						"when": {
+							"flowers": "3",
+							"facing": "south"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx3",
+							"y": 270
+						},
+						"when": {
+							"flowers": "3",
+							"facing": "west"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx4",
+							"y": 0
+						},
+						"when": {
+							"flowers": "4",
+							"facing": "north"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx4",
+							"y": 90
+						},
+						"when": {
+							"flowers": "4",
+							"facing": "east"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx4",
+							"y": 180
+						},
+						"when": {
+							"flowers": "4",
+							"facing": "south"
+						}
+					},
+					{
+						"apply": {
+							"model": "%1$s:block/%2$s-classicx4",
+							"y": 270
+						},
+						"when": {
+							"flowers": "4",
+							"facing": "west"
+						}
+					}
+				]
+			}
+			""", flower.getNamespace(), flower.getPath());
+	}
+
 	static String createFlowerQuantityModel(Identifier flower, int quantity) {
 		return String.format("""
 		{
@@ -309,6 +485,16 @@ public class Resources {
 		""", flower.getNamespace(), flower.getPath(), quantity);
 	}
 
+	static String createClassicFlowerQuantityModel(Identifier flower, int quantity) {
+		return String.format("""
+		{
+		  	"parent": "minecraft:block/cross-classicx%3$d",
+			"textures": {
+				"cross": "%1$s:block/%2$s"
+		   	}
+		}
+		""", flower.getNamespace(), flower.getPath(), quantity);
+	}
 	static String createFlowerBaseModel(Identifier flower) {
 		return String.format("""
 		{
