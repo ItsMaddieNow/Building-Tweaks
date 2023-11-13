@@ -21,6 +21,7 @@ import java.util.function.Consumer;
 public class Resources {
 
 	static LinkedList<Identifier> Flowers = new LinkedList<>();
+
 	public static void init() {
 		BuildingTweaks.LOGGER.info("Registering In-Memory Resourcepacks");
 		ResourceLoader.get(ResourceType.CLIENT_RESOURCES)
@@ -495,6 +496,7 @@ public class Resources {
 		}
 		""", flower.getNamespace(), flower.getPath(), quantity);
 	}
+
 	static String createFlowerBaseModel(Identifier flower) {
 		return String.format("""
 		{
