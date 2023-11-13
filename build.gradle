@@ -33,8 +33,6 @@ dependencies {
 	modImplementation libs.qsl
 	modImplementation libs.quilt.loader
 
-	modImplementation files("libs/arrp-0.8.0.jar")
-	include files("libs/arrp-0.8.0.jar")
 	modApi(libs.statement){ exclude group: "net.fabricmc.fabric-api" }
 	include libs.statement
 

@@ -9,7 +9,6 @@ qsl = "6.0.3+1.20.1"
 quilted_fabric_api = "7.0.3+0.83.1-1.20.1"
 
 statement = "4.2.5"
-arrp = "0.8.0"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
@@ -22,7 +21,6 @@ quilted_fabric_api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-a
 quilted_fabric_api_deprecated = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api-deprecated", version.ref = "quilted_fabric_api" }
 
 statement = { module = "com.github.Virtuoel:Statement", version.ref = "statement" }
-#arrp = { module = "net.devtech:arrp", version.ref = "arrp"}
 
 # If you have multiple similar dependencies, you can declare a dependency bundle and reference it on the build script with "libs.bundles.example".
 [bundles]
