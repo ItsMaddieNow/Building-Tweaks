@@ -36,29 +36,40 @@ public class Resources {
 	public static void ProvidePacks(Consumer<ResourcePackProfile> profileAdder, ResourceType type) {
 
 		Instant instant = Instant.now();
-		InMemoryResourcePack baseResources = new InMemoryResourcePack.Named("building_tweaks_base"){
-			@Override
-			public @NotNull ResourcePackActivationType getActivationType(){
-				return ResourcePackActivationType.ALWAYS_ENABLED;
+		try (
+			InMemoryResourcePack baseResources = new InMemoryResourcePack.Named("building_tweaks_base") {
+				@Override
+				public @NotNull ResourcePackActivationType getActivationType() {
+					return ResourcePackActivationType.ALWAYS_ENABLED;
+				}
+			};
+			InMemoryResourcePack classicResources = new InMemoryResourcePack.Named("building_tweaks_classic")
+			)
+		{
+			baseResources.putTextAsync("pack.mcmeta", (identifier) -> String.format("""
+				{"pack":{"pack_format":%d,"description":"Maddie's Building Tweaks."}}
+				""", SharedConstants.getGameVersion().getResourceVersion(type)
+			));
+			addIconToPack(baseResources, "/assets/maddies_building_tweaks/base-pack.png");
+			addIconToPack(classicResources, "/assets/maddies_building_tweaks/classic-pack.png");
+			for (Identifier flower : Flowers) {
+				baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("blockstates/%1$s.json", flower.getPath())), (identifier) -> createFlowerBlockstate(flower));
+				baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$sx%2$d.json", flower.getPath(), 1)), (identifier) -> createFlowerQuantityModel(flower, 1));
+				baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$sx%2$d.json", flower.getPath(), 2)), (identifier) -> createFlowerQuantityModel(flower, 2));
+				baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$sx%2$d.json", flower.getPath(), 3)), (identifier) -> createFlowerQuantityModel(flower, 3));
+				baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$sx%2$d.json", flower.getPath(), 4)), (identifier) -> createFlowerQuantityModel(flower, 4));
+				baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$s_base.json", flower.getPath())), (identifier) -> createFlowerBaseModel(flower));
+				baseResources.putTextAsync(ResourceType.SERVER_DATA, new Identifier(flower.getNamespace(), String.format("loot_tables/blocks/%1$s.json", flower.getPath())), (identifier) -> createFlowerLootTable(flower));
 			}
-		};
-		baseResources.putTextAsync("pack.mcmeta", (identifier) -> String.format("""
-					{"pack":{"pack_format":%d,"description":"Maddie's Building Tweaks."}}
-					""", SharedConstants.getGameVersion().getResourceVersion(type)
-		));
-		addIconToPack(baseResources, "/assets/maddies_building_tweaks/base-pack.png");
-		for(Identifier flower : Flowers){
-			baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("blockstates/%1$s.json", flower.getPath())), (identifier) -> createFlowerBlockstate(flower));
-			baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$sx%2$d.json", flower.getPath(), 1)), (identifier) -> createFlowerQuantityModel(flower, 1));
-			baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$sx%2$d.json", flower.getPath(), 2)), (identifier) -> createFlowerQuantityModel(flower, 2));
-			baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$sx%2$d.json", flower.getPath(), 3)), (identifier) -> createFlowerQuantityModel(flower, 3));
-			baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$sx%2$d.json", flower.getPath(), 4)), (identifier) -> createFlowerQuantityModel(flower, 4));
-			baseResources.putTextAsync(ResourceType.CLIENT_RESOURCES, new Identifier(flower.getNamespace(), String.format("models/block/%1$s_base.json", flower.getPath())), (identifier) -> createFlowerBaseModel(flower));
-			baseResources.putTextAsync(ResourceType.SERVER_DATA, new Identifier(flower.getNamespace(), String.format("loot_tables/blocks/%1$s.json", flower.getPath())), (identifier) -> createFlowerLootTable(flower));
+			profileAdder.accept(ResourcePackProfile.of("building_tweaks_base", Text.literal("Maddies Building Tweaks"), true, name -> baseResources, type, ResourcePackProfile.InsertionPosition.TOP, ResourcePackSource.PACK_SOURCE_BUILTIN));
+			classicResources.putTextAsync("pack.mcmeta", (identifier) -> String.format("""
+				{"pack":{"pack_format":%d,"description":"Maddie's Building Tweaks Classic Models"}}
+				""", SharedConstants.getGameVersion().getResourceVersion(type)
+			));
+			profileAdder.accept(ResourcePackProfile.of("building_tweaks_classic", Text.literal("Classic Models"),  false, name -> classicResources, type, ResourcePackProfile.InsertionPosition.TOP, ResourcePackSource.PACK_SOURCE_BUILTIN));
 		}
-		profileAdder.accept(ResourcePackProfile.of("building_tweaks_base", Text.literal("Maddies Building Tweaks"), true, name -> baseResources, type, ResourcePackProfile.InsertionPosition.TOP, ResourcePackSource.PACK_SOURCE_BUILTIN));
 		long RegistrationTime = Duration.between(instant, Instant.now()).toMillis();
-		BuildingTweaks.LOGGER.info("Completed in %d".formatted(RegistrationTime));
+		BuildingTweaks.LOGGER.info("Completed Constructing Resource Packs in %dms".formatted(RegistrationTime));
 	}
 
 	static void addIconToPack(MutableResourcePack pack, String resourcePath){
@@ -88,7 +99,7 @@ public class Resources {
 							"y": 0
 						},
 						"when": {
-							"flowers": "2|3|4",
+							"flowers": "1",
 							"facing": "north"
 						}
 					},
@@ -98,7 +109,7 @@ public class Resources {
 							"y": 90
 						},
 						"when": {
-							"flowers": "2|3|4",
+							"flowers": "1",
 							"facing": "east"
 						}
 					},
