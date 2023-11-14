@@ -1,6 +1,7 @@
 plugins {
 	id 'maven-publish'
 	alias libs.plugins.quilt.loom
+	alias libs.plugins.loom.vineflower
 	id 'com.modrinth.minotaur' version '2.+'
 }
 
