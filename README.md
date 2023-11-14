@@ -13,7 +13,9 @@ This is a building mod made with the philosophy that nothing that you build shou
 Allows you to place up to four of the same type of flower(Including Modded Flowers) in a single block for decoration and
 adds the ability to place flowers in a rotated. Makes flowers more renewable by allowing you to bonemeal them.
 
-<p align="center"><img alt="Demonstration of Placing Multiple Flowers In A Block" src="./assets/Multi-Placing-Small-1.0.0.webp"><img alt="Demonstration of Bonemeal Adding More Flowers to a Block" src="./assets/Bonemeal-1.0-Small.webp"><img alt="Demonstration of Directional Placing of Flowers" src="./assets/Oriented-Placing-Small-1.0.0.webp"></p>
+Works With Flowers Added By Mods.
+
+<p align="center"><img alt="Demonstration of Placing Multiple Flowers In A Block" src="./assets/Multi-Placing-Small-1.0.0.webp"><img alt="Demonstration of Bonemeal Adding More Flowers to a Block" src="./assets/Bonemeal-1.1.0-Small.webp"><img alt="Demonstration of Directional Placing of Flowers" src="./assets/Oriented-Placing-Small-1.0.0.webp"></p>
 
 ### Flower Pots (Versions >= 0.1.0)
 
