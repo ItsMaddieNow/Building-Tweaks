@@ -47,9 +47,6 @@ dependencies {
 	modApi(libs.statement){ exclude group: "net.fabricmc.fabric-api" }
 	include libs.statement
 
-	modImplementation libs.spruceui
-	include libs.spruceui
-
 	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
 	// Quilted Fabric API will automatically pull in the correct QSL version.
 	modImplementation libs.quilted.fabric.api
