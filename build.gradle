@@ -1,12 +1,19 @@
+buildscript {
+	dependencies {
+		classpath 'org.kohsuke:github-api:1.315'
+	}
+}
+
 plugins {
 	id 'maven-publish'
 	alias libs.plugins.quilt.loom
 	alias libs.plugins.loom.vineflower
-	id 'com.modrinth.minotaur' version '2.+'
+	alias libs.plugins.modrinth.minotaur
+	alias libs.plugins.grgit
 }
 
 archivesBaseName = project.archives_base_name
-version = "${project.version}+${libs.versions.minecraft.get()}"
+version = "${project.version}${getVersionMetadata()}${project.prerelease=="true"?"-beta":""}+${libs.versions.minecraft.get()}"
 group = project.maven_group
 
 repositories {
@@ -16,7 +23,10 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven {url = "https://jitpack.io"}
-	//maven {url = uri("https://ueaj.dev/maven")}
+	maven {
+		name 'Gegy'
+		url 'https://maven.gegy.dev'
+	}
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -36,6 +46,9 @@ dependencies {
 
 	modApi(libs.statement){ exclude group: "net.fabricmc.fabric-api" }
 	include libs.statement
+
+	modImplementation libs.spruceui
+	include libs.spruceui
 
 	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
 	// Quilted Fabric API will automatically pull in the correct QSL version.
@@ -93,7 +106,66 @@ publishing {
 		// retrieving dependencies.
 	}
 }
+import org.kohsuke.github.GHReleaseBuilder
+import org.kohsuke.github.GitHub
+
+tasks.register('github') {
+	dependsOn renameJar
+	onlyIf {
+		ENV.GITHUB_TOKEN
+	}
+
+	doLast {
+		def github = GitHub.connectUsingOAuth(ENV.GITHUB_TOKEN as String)
+		def repository = github.getRepository(ENV.GITHUB_REPOSITORY)
+
+		def releaseBuilder = new GHReleaseBuilder(repository, version as String)
+		releaseBuilder.name("Maddie's Building Tweaks ${project.version}${project.prerelease=="true"?" Beta":""} For Quilt ${libs.versions.minecraft.get()}")
+		releaseBuilder.body(ENV.CHANGELOG ?: "No changelog provided")
+		releaseBuilder.commitish("${grgit.head().hashCode()}")
+		releaseBuilder.prerelease(project.prerelease == 'true')
+
+		def ghRelease = releaseBuilder.create()
+		ghRelease.uploadAsset(renameJar.archiveFile.get().getAsFile(), 'application/java-archive');
+	}
+}
+
 
 modrinth{
-	token
+	token = System.getenv("MODRINTH_TOKEN")
+	projectId = "hHUFyhEX"
+	versionName = "Maddie's Building Tweaks ${project.version}${project.prerelease=="true"?" Beta":""} For Quilt ${libs.versions.minecraft.get()}"
+	versionType = "release"
+	uploadFile = jar
+	gameVersions = ["${libs.versions.minecraft.get()}"]
+	loaders = ["quilt"]
+	dependencies { // A special DSL for creating dependencies
+		// scope.type
+		// The scope can be `required`, `optional`, `incompatible`, or `embedded`
+		// The type can either be `project` or `version`
+		required.project "qsl" // Creates a new required dependency on
+		embedded.version "statement", "4.2.4+1.14.4-1.19.1" // Creates a new optional dependency on this specific version of Sodium
+	}
+}
+
+def getVersionMetadata() {
+	// CI builds only
+	if (project.hasProperty("build.release")) {
+		return "" // no tag whatsoever
+	}
+
+	if (grgit != null) {
+		def head = grgit.head()
+		def id = head.abbreviatedId
+
+		// Flag the build if the build tree is not clean
+		if (!grgit.status().clean) {
+			id += "-dirty"
+		}
+
+		return "+git.${id}"
+	}
+
+	// No tracking information could be found about the build
+	return "+unknown"
 }
