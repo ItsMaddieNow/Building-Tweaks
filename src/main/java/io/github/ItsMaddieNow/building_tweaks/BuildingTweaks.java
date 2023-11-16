@@ -1,10 +1,13 @@
 package io.github.ItsMaddieNow.building_tweaks;
 
+import io.github.ItsMaddieNow.building_tweaks.config.AbstractConfig;
+import io.github.ItsMaddieNow.building_tweaks.config.BTQuiltConfig;
 import io.github.ItsMaddieNow.building_tweaks.flowers.FlowerTweaks;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 public class BuildingTweaks implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -13,6 +16,7 @@ public class BuildingTweaks implements ModInitializer {
 	public static final String IDHuman = "Maddies Building Tweaks" ;
 	public static final String ID = "maddies_building_tweaks" ;
 	public static final Logger LOGGER = LoggerFactory.getLogger(IDHuman);
+	public static final AbstractConfig CONFIG = new BTQuiltConfig();
 
 	@Override
 	public void onInitialize(ModContainer mod) {

@@ -9,6 +9,7 @@ qsl = "6.1.2+1.20.1"
 quilted_fabric_api = "7.0.3+0.83.1-1.20.1"
 
 statement = "4.2.5"
+spruceui = "5.0.2+1.20"
 
 quilt_loom = "1.0.+"
 loom_vineflower = "1.11.0"
@@ -26,6 +27,7 @@ quilted_fabric_api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-a
 quilted_fabric_api_deprecated = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api-deprecated", version.ref = "quilted_fabric_api" }
 
 statement = { module = "com.github.Virtuoel:Statement", version.ref = "statement" }
+spruceui = { module = "dev.lambdaurora:spruceui", version.ref = "spruceui" }
 
 # If you have multiple similar dependencies, you can declare a dependency bundle and reference it on the build script with "libs.bundles.example".
 [bundles]
