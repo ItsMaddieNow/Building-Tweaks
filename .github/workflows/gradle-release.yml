@@ -28,7 +28,7 @@ jobs:
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@{latest-release}
       - name: Release With Gradle
-        run: ./gradlew github modrinth -Pbuild.release=true --parallel --stacktrace
+        run: ./gradlew build github modrinth -Pbuild.release=true --parallel --stacktrace
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
