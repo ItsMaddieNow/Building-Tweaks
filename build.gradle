@@ -10,7 +10,7 @@ plugins {
 	alias libs.plugins.loom.vineflower
 	alias libs.plugins.modrinth.minotaur
 	alias libs.plugins.grgit
-	id "net.kyori.indra.git" version "3.1.1"
+	alias libs.plugins.indra.git
 }
 
 archivesBaseName = project.archives_base_name
@@ -109,7 +109,7 @@ publishing {
 	}
 }
 
-static def getBranch() {
+def getBranch() {
 	def ENV = System.getenv()
 	if (ENV.GITHUB_REF) {
 		def branch = ENV.GITHUB_REF

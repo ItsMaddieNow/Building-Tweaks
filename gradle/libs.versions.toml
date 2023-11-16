@@ -15,6 +15,7 @@ quilt_loom = "1.0.+"
 loom_vineflower = "1.11.0"
 grgit = '5.0.0'
 modrinth_minotaur = "2.+"
+indra_git = "3.1.1"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
@@ -38,3 +39,4 @@ quilt_loom = { id = "org.quiltmc.loom", version.ref = "quilt_loom" }
 loom_vineflower = { id = "io.github.juuxel.loom-vineflower", version.ref = "loom_vineflower"}
 grgit = { id = "org.ajoberstar.grgit", version.ref = "grgit" }
 modrinth_minotaur = { id = 'com.modrinth.minotaur', version.ref = "modrinth_minotaur" }
+indra_git = { id = "net.kyori.indra.git", version.ref = "indra_git"}
