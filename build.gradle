@@ -10,9 +10,11 @@ plugins {
 	alias libs.plugins.loom.vineflower
 	alias libs.plugins.modrinth.minotaur
 	alias libs.plugins.grgit
+	id "net.kyori.indra.git" version "3.1.1"
 }
 
 archivesBaseName = project.archives_base_name
+def version_simple = "${project.version}"
 version = "${project.version}${getVersionMetadata()}${project.prerelease=="true"?"-beta":""}+${libs.versions.minecraft.get()}"
 group = project.maven_group
 
@@ -103,11 +105,27 @@ publishing {
 		// retrieving dependencies.
 	}
 }
+
+static def getBranch() {
+	def ENV = System.getenv()
+	if (ENV.GITHUB_REF) {
+		def branch = ENV.GITHUB_REF
+		return branch.substring(branch.lastIndexOf('/') + 1)
+	}
+
+	if (!indraGit.isPresent()) {
+		return 'unknown'
+	}
+
+	def branch = indraGit.branchName()
+	return branch.substring(branch.lastIndexOf('/') + 1)
+}
+
 import org.kohsuke.github.GHReleaseBuilder
 import org.kohsuke.github.GitHub
 
 tasks.register('github') {
-	dependsOn renameJar
+	def ENV = System.getenv()
 	onlyIf {
 		ENV.GITHUB_TOKEN
 	}
@@ -116,14 +134,15 @@ tasks.register('github') {
 		def github = GitHub.connectUsingOAuth(ENV.GITHUB_TOKEN as String)
 		def repository = github.getRepository(ENV.GITHUB_REPOSITORY)
 
-		def releaseBuilder = new GHReleaseBuilder(repository, version as String)
-		releaseBuilder.name("Maddie's Building Tweaks ${project.version}${project.prerelease=="true"?" Beta":""} For Quilt ${libs.versions.minecraft.get()}")
+		def releaseBuilder = new GHReleaseBuilder(repository, "v${version_simple}-${libs.versions.minecraft.get()}")
+		releaseBuilder.name("Maddie's Building Tweaks ${version_simple}${project.prerelease=="true"?" Beta":""} For Quilt ${libs.versions.minecraft.get()}")
 		releaseBuilder.body(ENV.CHANGELOG ?: "No changelog provided")
-		releaseBuilder.commitish("${grgit.head().hashCode()}")
+		releaseBuilder.commitish(getBranch())
 		releaseBuilder.prerelease(project.prerelease == 'true')
 
 		def ghRelease = releaseBuilder.create()
-		ghRelease.uploadAsset(renameJar.archiveFile.get().getAsFile(), 'application/java-archive');
+		ghRelease.uploadAsset(file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"), 'application/java-archive')
+		ghRelease.uploadAsset(file("${project.buildDir}/libs/${archivesBaseName}-${version}-sources.jar"), 'application/java-archive')
 	}
 }
 
@@ -131,7 +150,7 @@ tasks.register('github') {
 modrinth{
 	token = System.getenv("MODRINTH_TOKEN")
 	projectId = "hHUFyhEX"
-	versionName = "Maddie's Building Tweaks ${project.version}${project.prerelease=="true"?" Beta":""} For Quilt ${libs.versions.minecraft.get()}"
+	versionName = "Maddie's Building Tweaks ${version_simple}${project.prerelease=="true"?" Beta":""} For Quilt ${libs.versions.minecraft.get()}"
 	versionType = "release"
 	uploadFile = jar
 	gameVersions = ["${libs.versions.minecraft.get()}"]
