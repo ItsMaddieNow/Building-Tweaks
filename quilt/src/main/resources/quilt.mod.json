@@ -4,28 +4,26 @@
         "group": "${group}",
         "id": "${mod_id}",
         "version": "${version}",
-        "name": "${mod_name}",
-        "description": "${description}",
-        "authors": [
-            "${mod_author}"
-        ],
-        "contact": {
-            "homepage": "https://github.com/ItsMaddieNow/Building-Tweaks",
-            "issues": "https://github.com/ItsMaddieNow/Building-Tweaks/issues",
-            "sources": "https://github.com/ItsMaddieNow/Building-Tweaks"
+        "metadata": {
+            "mod_name": "${mod_name}",
+            "description": "${description}",
+            "contributors": {
+                "${mod_author}": "Owner"
+            },
+            "license": "${license}",
+            "contact": {
+                "homepage": "https://github.com/ItsMaddieNow/Building-Tweaks",
+                "issues": "https://github.com/ItsMaddieNow/Building-Tweaks/issues",
+                "sources": "https://github.com/ItsMaddieNow/Building-Tweaks"
+            },
+            "icon": "${mod_id}.png"
         },
-        "license": "${license}",
-        "icon": "${mod_id}.png",
-        "environment": "*",
+        "intermediate_mappings": "net.fabricmc:intermediary",
         "entrypoints": {
             "main": [
                 "com.example.examplemod.ExampleMod"
             ]
         },
-        "mixins": [
-            "${mod_id}.mixins.json",
-            "${mod_id}.quilt.mixins.json"
-        ],
         "depends": [
             {
                 "id": "quilt_loader",
@@ -39,10 +37,11 @@
                 "id": "minecraft",
                 "versions": "${minecraft_version}"
             }
-        ],
-        "suggests": {
-            "another-mod": "*"
-        }
-    }
+        ]
+    },
+    "mixin": [
+        "${mod_id}.mixins.json",
+        "${mod_id}.quilt.mixins.json"
+    ]
 }
   
